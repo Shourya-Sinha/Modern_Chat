@@ -43,15 +43,16 @@ const BlockDialog = ({ open, handleClose }) => {
       onClose={handleClose}
       aria-describedby="alert-dialog-slide-description"
     >
-      <DialogTitle>Block This Contact</DialogTitle>
+      <DialogTitle variant="subtitle2">Block This Contact</DialogTitle>
       <DialogContent>
-        <DialogContentText id="alert-dialog-slide-description">
+        <DialogContentText id="alert-dialog-slide-description" variant="caption">
           Are You Sure you want to block this Contact?
+          After Blocking You not be able to Send Message!!
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleClose}>Yes</Button>
+        <Button onClick={handleClose} variant="caption">Cancel</Button>
+        <Button onClick={handleClose} variant="caption">Yes</Button>
       </DialogActions>
     </Dialog>
   );
@@ -66,15 +67,16 @@ const DeleteDialog = ({ open, handleClose }) => {
       onClose={handleClose}
       aria-describedby="alert-dialog-slide-description"
     >
-      <DialogTitle>Delete This Chat</DialogTitle>
+      <DialogTitle variant="subtitle2">Delete This Chat</DialogTitle>
       <DialogContent>
-        <DialogContentText id="alert-dialog-slide-description">
+        <DialogContentText id="alert-dialog-slide-description" variant="caption">
           Are You Sure you want to delete this Chat?
+          After Deleted You not recover chats!!
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleClose}>Yes</Button>
+        <Button onClick={handleClose} variant="caption">Cancel</Button>
+        <Button onClick={handleClose} variant="caption">Yes</Button>
       </DialogActions>
     </Dialog>
   );
