@@ -1,0 +1,23 @@
+
+.custom-scrollbar-container {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent; /* For Firefox */
+  transition: overflow-y 0.3s ease;
+}
+
+.custom-scrollbar-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar-container::-webkit-scrollbar-thumb {
+  /* background-color: transparent; */
+  background-color: #000;
+}
+
+.custom-scrollbar-container.focused {
+  scrollbar-color: #000 transparent; /* For Firefox */
+  overflow-y: scroll;
+}
+
