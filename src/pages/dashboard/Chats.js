@@ -122,22 +122,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 const Chats = () => {
   const theme = useTheme();
-  const [hasFocus, setHasFocus] = useState(false);
-  let timeoutId;
-
-  const handleFocus = () => {
-    setHasFocus(true);
-    timeoutId = setTimeout(() => {
-      document.querySelector('.custom-scrollbar-container').style.overflowY = 'scroll';
-    }, 500);
-  };
-
-  const handleBlur = () => {
-    setHasFocus(false);
-    if (timeoutId) {
-      clearTimeout(timeoutId);
-    }
-  };
   return (
     <Box
       sx={{
@@ -178,9 +162,7 @@ const Chats = () => {
         spacing={2}
           direction={"column"}
           sx={{ flexGrow: 1, overflow: "scroll", height: "100%" }}
-          className={`custom-scrollbar-container ${hasFocus ? 'focused' : ''}`}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
+          className="custom-scrollbar-container"
         >
           <Stack spacing={2.4}>
             <Typography variant="subtitle2" sx={{ color: "#676767" }}>
