@@ -15,15 +15,18 @@ import {
 } from "@mui/material";
 import { RHFTextField } from "../../components/hook-form";
 
-const LoginForm = () => {
+const NewPasswordForm = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const LoginSchema = Yup.object().shape({
-    email: Yup.string()
-      .required("Email is required")
-      .email("Email must be a valid Email Address"),
-    password: Yup.string()
+  const [showConfPassword, setShowConfPassword] = useState(false);
+
+  const NewPasswordSchema = Yup.object().shape({
+    newPassword: Yup.string()
       .required("Password is required")
       .min(6, "Password must be at least 6 characters"),
+    confirmPassword: Yup.string()
+      .required("Password is required")
+      .min(6, "Password must be at least 6 characters")
+      .oneOf([Yup.ref("newPassword"), null], "Password must match"),
   });
 
   // const defaultValues = {
@@ -31,7 +34,7 @@ const LoginForm = () => {
   //   password: "demo1234",
   // };
   const methods = useForm({
-    resolver: yupResolver(LoginSchema),
+    resolver: yupResolver(NewPasswordSchema),
     //defaultValues,
   });
 
@@ -61,10 +64,9 @@ const LoginForm = () => {
           <Alert severity="error">{errors.afterSubmit.message}</Alert>
         )}
 
-        <RHFTextField name="email" label="Email address" />
         <RHFTextField
-          name="password"
-          label="Password"
+          name="newPassword"
+          label="New Password"
           type={showPassword ? "text" : "password"}
           InputProps={{
             endAdornment: (
@@ -79,19 +81,25 @@ const LoginForm = () => {
             ),
           }}
         />
-      </Stack>
-      <Stack alignItems={"flex-end"} sx={{ my: 2 }}>
-        <Link
-          component={RouterLink}
-          to="/auth/reset-password"
-          variant="body2"
-          color={"inherit"}
-          underline="always"
-        >
-          Forgot Password?
-        </Link>
-      </Stack>
-      <Button
+
+<RHFTextField
+          name="confirmPassword"
+          label="Confirm Password"
+          type={showConfPassword ? "text" : "password"}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  onClick={() => setShowConfPassword(!showConfPassword)}
+                  edge="end"
+                >
+                  {showConfPassword ? <Eye /> : <EyeSlash />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+        />
+        <Button
         fullWidth
         color="inherit"
         size="large"
@@ -108,10 +116,12 @@ const LoginForm = () => {
           },
         }}
       >
-        Login
+        Submit
       </Button>
+      </Stack>
+      
     </FormProvider>
   );
 };
 
-export default LoginForm;
+export default NewPasswordForm;
