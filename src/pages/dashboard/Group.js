@@ -7,7 +7,7 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import {
   Search,
   SearchIconWrapper,
@@ -18,8 +18,16 @@ import { Link as RouterLink } from "react-router-dom";
 import "../../components/scrollbar/ScrollBar.css";
 import { ChatList } from "../../data";
 import ChatElement from "../../components/ChatElement";
+import CreateGroup from "../../sections/main/CreateGroup";
+
+
 const Group = () => {
   const theme = useTheme();
+  const [openDialog,setOpenDialog] = useState(false);
+const handleCloseDialog=()=>{
+    setOpenDialog(false)
+}
+
   return (
     <>
       <Stack direction={"row"} sx={{ width: "100%" }}>
@@ -53,7 +61,9 @@ const Group = () => {
               <Typography variant="subtitle2" component={Link}>
                 Create New Group
               </Typography>
-              <IconButton>
+              <IconButton onClick={()=>{
+                setOpenDialog(true)
+              }}>
                 <Plus style={{ color: theme.palette.primary.main }} />
               </IconButton>
             </Stack>
@@ -91,6 +101,7 @@ const Group = () => {
         {/* Right */}
         {/* //TODO => REUSE CONVERSATION COMPONENT */}
       </Stack>
+      {openDialog && <CreateGroup open={openDialog} handleClose={handleCloseDialog} />}
     </>
   );
 };

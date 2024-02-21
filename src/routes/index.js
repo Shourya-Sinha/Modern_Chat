@@ -37,7 +37,8 @@ children:[
         { path: "app", element: <GeneralApp /> },
         { path: "settings", element: <Settings /> },
         { path: "group", element: <GroupPage /> },
-        
+        { path: "call", element: <CallPage /> },
+        { path: "profile", element: <ProfilePage /> },
         { path: "404", element: <Page404 /> },
         { path: "*", element: <Navigate to="/404" replace /> },
       ],
@@ -54,8 +55,8 @@ const RegisterPage = Loadable(lazy(() => import("../pages/auth/Register")));
 const ResetPasswordPage = Loadable(lazy(() => import("../pages/auth/ResetPassword")));
 const NewPasswordPage = Loadable(lazy(() => import("../pages/auth/NewPassword")));
 
-const Settings = Loadable(
-  lazy(() => import("../pages/dashboard/Settings")),
-);
+const Settings = Loadable( lazy(() => import("../pages/dashboard/Settings")),);
+const CallPage = Loadable(lazy(() => import("../pages/dashboard/Call")));
 const GroupPage = Loadable(lazy(() => import("../pages/dashboard/Group")));
 const Page404 = Loadable(lazy(() => import("../pages/Page404")));
+const ProfilePage = Loadable(lazy(() => import("../pages/dashboard/Profile")));
