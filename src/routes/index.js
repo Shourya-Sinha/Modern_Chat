@@ -27,6 +27,7 @@ children:[
   {element: <RegisterPage />, path:"register"},
   {element: <ResetPasswordPage />, path:"reset-password"},
   {element: <NewPasswordPage />, path:"new-password"},
+  {element: <VerifyPage />, path:"verify"},
 ]
     },
     {
@@ -54,6 +55,7 @@ const LoginPage = Loadable(lazy(() => import("../pages/auth/Login")));
 const RegisterPage = Loadable(lazy(() => import("../pages/auth/Register")));
 const ResetPasswordPage = Loadable(lazy(() => import("../pages/auth/ResetPassword")));
 const NewPasswordPage = Loadable(lazy(() => import("../pages/auth/NewPassword")));
+const VerifyPage = Loadable(lazy(() => import("../pages/auth/Verify")));
 
 const Settings = Loadable( lazy(() => import("../pages/dashboard/Settings")),);
 const CallPage = Loadable(lazy(() => import("../pages/dashboard/Call")));
